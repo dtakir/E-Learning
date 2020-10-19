@@ -1,4 +1,5 @@
-﻿using Entities.Concrate;
+﻿using Core.Entities.Concrate;
+using Entities.Concrate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,8 @@ namespace DataAccess.Concrate.EntityFramework.Context
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<InstructorCourse> InstructorCourses { get; set; }
         public DbSet<Section> Sections { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }
