@@ -12,6 +12,8 @@ namespace Entities.Concrate
         public string Description { get; set; }
         public decimal Price { get; set; }
         public DateTime CreatedDate { get; set; }
+        public virtual ICollection<CourseCategory> CourseCategories { get; set; }
+        public virtual ICollection<CourseCurriculum> CourseCurriculums { get; set; }
 
     }
 }

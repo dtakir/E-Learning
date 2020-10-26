@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("add")]
+        [HttpPost("delete")]
         public IActionResult Delete(Course course)
         {
             var result = _courseService.Delete(course);

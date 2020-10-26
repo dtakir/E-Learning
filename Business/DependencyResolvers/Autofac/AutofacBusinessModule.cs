@@ -23,12 +23,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CurriculumManager>().As<ICurriculumService>();
             builder.RegisterType<EfCurriculumDal>().As<ICurriculumDal>();
 
-            builder.RegisterType<InstructorManager>().As<IInstructorService>();
-            builder.RegisterType<EfInstructorDal>().As<IInstructorDal>();
-
-            builder.RegisterType<SectionManager>().As<ISectionService>();
-            builder.RegisterType<EfSectionDal>().As<ISectionDal>();
-
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 

@@ -32,11 +32,11 @@ namespace DataAccess.Concrate.EntityFramework
             using (var context = new ELearningContext())
             {
                 var result = from course in context.Courses
-                             join instructorCourse in context.InstructorCourses
-                             on course.Id equals instructorCourse.CourseId
-                             join category in context.Categories
-                             on instructorCourse.InstructorId equals category.Id
-                             where instructorCourse.Id == instructorId
+                             join userCourse in context.UserCourses
+                             on course.Id equals userCourse.CourseId
+                             join user in context.Users
+                             on userCourse.UserId equals user.Id
+                             where user.Id == instructorId
                              select new Course { Id = course.Id, Name = course.Name, Description = course.Description, CreatedDate = course.CreatedDate, Price = course.Price };
                 return result.ToList();
             }

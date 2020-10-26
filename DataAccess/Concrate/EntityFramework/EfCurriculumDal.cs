@@ -15,13 +15,13 @@ namespace DataAccess.Concrate.EntityFramework
         {
             using (var context=new ELearningContext())
             {
-                var result = from curriculum in context.Curricullums
+                var result = from curriculum in context.Curriculums
                              join courseCurriculum in context.CourseCurriculums
                              on curriculum.Id equals courseCurriculum.CurriculumId
                              join course in context.Courses
                              on courseCurriculum.CourseId equals course.Id
                              where courseCurriculum.CourseId == courseId
-                             select new Curriculum { Duration = curriculum.Duration, SectionId = curriculum.SectionId, Name = curriculum.Name, Id = curriculum.Id };
+                             select new Curriculum { Duration = curriculum.Duration, Name = curriculum.Name, Id = curriculum.Id };
                 return result.ToList();
             }
         }

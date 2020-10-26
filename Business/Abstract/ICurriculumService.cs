@@ -9,7 +9,6 @@ namespace Business.Abstract
     public interface ICurriculumService
     {
         IDataResult<List<Curriculum>> GetListByCourse(int courseId);
-        IDataResult<List<Curriculum>> GetListBySection(int sectionId);
         IResult Add(Curriculum curriculum);
         IResult Update(Curriculum curriculum);
         IResult Delete(Curriculum curriculum);

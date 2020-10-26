@@ -35,11 +35,6 @@ namespace Business.Concrate
             return new SuccessDataResult<List<Curriculum>>(_curriculumDal.GetListByCourse(courseId));
         }
 
-        public IDataResult<List<Curriculum>> GetListBySection(int sectionId)
-        {
-            return new SuccessDataResult<List<Curriculum>>( _curriculumDal.GetList(c=>c.SectionId==sectionId));
-        }
-
         public IResult Update(Curriculum curriculum)
         {
             _curriculumDal.Update(curriculum);

@@ -30,17 +30,6 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("getlistbysection")]
-        public IActionResult GetListBySection(int sectionId)
-        {
-            var result = _curriculumService.GetListBySection(sectionId);
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-
         [HttpPost("add")]
         public IActionResult Add(Curriculum curriculum)
         {
