@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constands;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrate;
@@ -17,6 +19,7 @@ namespace Business.Concrate
         {
             _categoryDal = categoryDal;
         }
+        [ValidationAspect(typeof(CategoryValidator))]
         public IResult Add(Category category)
         {
             _categoryDal.Add(category);
@@ -39,6 +42,7 @@ namespace Business.Concrate
              return new SuccessDataResult<List<Category>> (_categoryDal.GetList(c => c.ParentId == parentId).ToList());
         }
 
+        [ValidationAspect(typeof(CategoryValidator))]
         public IResult Update(Category category)
         {
             _categoryDal.Update(category);

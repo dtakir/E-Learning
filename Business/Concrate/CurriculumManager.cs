@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constands;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrate;
@@ -16,6 +18,8 @@ namespace Business.Concrate
         {
             _curriculumDal = curriculumDal;
         }
+
+        [ValidationAspect(typeof(CurriculumValidator))]
         public IResult Add(Curriculum curriculum)
         {
             _curriculumDal.Add(curriculum);
@@ -35,6 +39,7 @@ namespace Business.Concrate
             return new SuccessDataResult<List<Curriculum>>(_curriculumDal.GetListByCourse(courseId));
         }
 
+        [ValidationAspect(typeof(CurriculumValidator))]
         public IResult Update(Curriculum curriculum)
         {
             _curriculumDal.Update(curriculum);

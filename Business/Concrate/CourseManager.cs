@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constands;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrate;
@@ -18,6 +20,7 @@ namespace Business.Concrate
             _courseDal = courseDal;
 
         }
+        [ValidationAspect(typeof(CourseValidator))]
         public IResult Add(Course course)
         {
             _courseDal.Add(course);
@@ -53,6 +56,7 @@ namespace Business.Concrate
 
         }
 
+        [ValidationAspect(typeof(CourseValidator))]
         public IResult Update(Course course)
         {
             _courseDal.Update(course);

@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrate;
+using Castle.DynamicProxy;
+using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
 using DataAccess.Concrate.EntityFramework;
@@ -29,6 +32,12 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
 
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
 
         }
     }
